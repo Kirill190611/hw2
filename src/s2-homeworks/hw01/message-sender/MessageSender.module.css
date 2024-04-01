@@ -1,13 +1,40 @@
 .sendForm {
-
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .textarea {
-
+    width: 976px;
+    min-height: 40px;
+    border: none;
+    background-color: #F5F7FB;
+    border-radius: 20px;
+    resize: none;
+    box-shadow: 0 1px 2px 0 #1D21261A,
+                0 5px 20px 0 #1D212608;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    color: #000000;
+    opacity: 90%;
+    padding: 11px 24px;
 }
 
 .button {
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    min-height: 40px;
+    border: none;
+    border-radius: 20px;
+    background-color: #0066CC;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19px;
 }
 
 .button:hover {
