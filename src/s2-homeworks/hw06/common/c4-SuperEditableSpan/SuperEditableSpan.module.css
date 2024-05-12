@@ -1,11 +1,43 @@
 .spanBlock {
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 16px;
 }
 
 .span {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 69px;
+    min-height: 24px;
+    color: #0080FF;
 }
 
 .input {
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    display: block;
+    width: 276px;
+    max-width: 276px;
+    height: 36px;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    padding: 8px 24px;
+    color: black;
 }
 
 .pen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
 }
