@@ -1,7 +1,7 @@
 .loader {
     display: flex;
-    width: 200px;
-    height: 100px;
-    background-color: #0059b3;
+    width: 108px;
+    height: 108px;
+    background: url("./Loading.svg");
     /*свг и/или анимация*/
 }
