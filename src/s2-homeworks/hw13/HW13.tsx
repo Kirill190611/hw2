@@ -36,12 +36,29 @@ const HW13 = () => {
             .then((res) => {
                 setCode('Код 200!')
                 setImage(success200)
+                setText(res.data.errorText)
+                setInfo(res.data.info)
                 // дописать
 
             })
             .catch((e) => {
-                // дописать
-
+                if (e.res.data) {
+                    setText(e.res.data.errorText)
+                    setInfo(e.res.data.info)
+                    if (e.res.status === 400) {
+                        setCode('Код 400!')
+                        setImage(error400)
+                    } else if (e.res.status === 500) {
+                        setCode('Код 500!')
+                        setImage(error500)
+                    }
+                } else {
+                    setCode(e.name)
+                    setImage(errorUnknown)
+                    setText(e.message)
+                    setInfo(e.name)
+                }
+                console.log(e)
             })
     }
 
@@ -55,6 +72,7 @@ const HW13 = () => {
                         id={'hw13-send-true'}
                         onClick={send(true)}
                         xType={'secondary'}
+                        disabled={info === '...loading'}
                         // дописать
 
                     >
@@ -64,6 +82,7 @@ const HW13 = () => {
                         id={'hw13-send-false'}
                         onClick={send(false)}
                         xType={'secondary'}
+                        disabled={info === '...loading'}
                         // дописать
 
                     >
@@ -73,6 +92,7 @@ const HW13 = () => {
                         id={'hw13-send-undefined'}
                         onClick={send(undefined)}
                         xType={'secondary'}
+                        disabled={info === '...loading'}
                         // дописать
 
                     >
@@ -82,6 +102,7 @@ const HW13 = () => {
                         id={'hw13-send-null'}
                         onClick={send(null)} // имитация запроса на не корректный адрес
                         xType={'secondary'}
+                        disabled={info === '...loading'}
                         // дописать
 
                     >
