@@ -42,18 +42,18 @@ const HW13 = () => {
 
             })
             .catch((e) => {
-                if (e.res.data) {
-                    setText(e.res.data.errorText)
-                    setInfo(e.res.data.info)
-                    if (e.res.status === 400) {
+                if (e.response.data) {
+                    setText(e.response.data.errorText)
+                    setInfo(e.response.data.info)
+                    if (e.response.status === 400) {
                         setCode('Код 400!')
                         setImage(error400)
-                    } else if (e.res.status === 500) {
+                    } else if (e.response.status === 500) {
                         setCode('Код 500!')
                         setImage(error500)
                     }
                 } else {
-                    setCode(e.name)
+                    setCode('Error!')
                     setImage(errorUnknown)
                     setText(e.message)
                     setInfo(e.name)
