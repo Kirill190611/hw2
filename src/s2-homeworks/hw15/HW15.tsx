@@ -5,12 +5,13 @@ import axios from 'axios'
 import SuperPagination from './common/c9-SuperPagination/SuperPagination'
 import {useSearchParams} from 'react-router-dom'
 import SuperSort from './common/c10-SuperSort/SuperSort'
+import Loading from '../../img/Loading.png'
 
 /*
-* 1 - дописать SuperPagination
-* 2 - дописать SuperSort
-* 3 - проверить pureChange тестами
-* 3 - дописать sendQuery, onChangePagination, onChangeSort в HW15
+* 1 - дописать SuperPagination +
+* 2 - дописать SuperSort +
+* 3 - проверить pureChange тестами +
+* 3 - дописать sendQuery, onChangePagination, onChangeSort в HW15 +
 * 4 - сделать стили в соответствии с дизайном
 * 5 - добавить HW15 в HW5/pages/JuniorPlus
 * */
@@ -51,36 +52,28 @@ const HW15 = () => {
         setLoading(true)
         getTechs(params)
             .then((res) => {
-                // делает студент
-
-                // сохранить пришедшие данные
-
-                //
+                if (res && res.data) {
+                    setTechs(res.data.techs)
+                    setTotalCount(res.data.totalCount)
+                }
+                setLoading(false)
             })
     }
 
     const onChangePagination = (newPage: number, newCount: number) => {
-        // делает студент
+        setPage(newPage)
+        setCount(newCount)
 
-        // setPage(
-        // setCount(
-
-        // sendQuery(
-        // setSearchParams(
-
-        //
+        sendQuery({sort, page: newPage, count: newCount})
+        setSearchParams({sort, page: newPage.toString(), count: newCount.toString()})
     }
 
     const onChangeSort = (newSort: string) => {
-        // делает студент
+        setSort(newSort)
+        setPage(1)
 
-        // setSort(
-        // setPage(1) // при сортировке сбрасывать на 1 страницу
-
-        // sendQuery(
-        // setSearchParams(
-
-        //
+        sendQuery({sort: newSort, page: 1, count})
+        setSearchParams({sort: newSort, page: "1", count: ""})
     }
 
     useEffect(() => {
@@ -107,7 +100,8 @@ const HW15 = () => {
             <div className={s2.hwTitle}>Homework #15</div>
 
             <div className={s2.hw}>
-                {idLoading && <div id={'hw15-loading'} className={s.loading}>Loading...</div>}
+                {idLoading &&
+                    <div id={'hw15-loading'} className={s.loading}><img className={s.loadingImg} src={Loading}/></div>}
 
                 <SuperPagination
                     page={page}
